@@ -1,13 +1,13 @@
 const fs = require("fs");
 const path = require("path");
 
+import { commandArgs } from "./modules/args";
 import {
   createReactComponent,
   createViewModelHooks,
 } from "./modules/component";
 import { TYPE } from "./modules/constants";
 import { getPathName } from "./modules/path";
-import { commandArgs } from "./modules/args";
 import { createUnitTestCode } from "./modules/test";
 
 if (commandArgs.type === TYPE.COMPONENT) {
