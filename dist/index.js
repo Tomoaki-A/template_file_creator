@@ -8,7 +8,7 @@ var constants_1 = require("./modules/constants");
 var path_1 = require("./modules/path");
 var test_1 = require("./modules/test");
 if (args_1.commandArgs.type === constants_1.TYPE.COMPONENT) {
-    var directoryPath = (0, path_1.getPathName)({ path: args_1.commandArgs.path });
+    var directoryPath = "".concat((0, path_1.getPathName)({ path: args_1.commandArgs.path }), "/").concat(args_1.commandArgs.name);
     if (!fs.existsSync(directoryPath)) {
         fs.mkdirSync(directoryPath, { recursive: true });
     }

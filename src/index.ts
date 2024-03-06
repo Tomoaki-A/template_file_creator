@@ -11,7 +11,9 @@ import { getPathName } from "./modules/path";
 import { createUnitTestCode, getTestFilePath } from "./modules/test";
 
 if (commandArgs.type === TYPE.COMPONENT) {
-  const directoryPath = getPathName({ path: commandArgs.path });
+  const directoryPath = `${getPathName({ path: commandArgs.path })}/${
+    commandArgs.name
+  }`;
   if (!fs.existsSync(directoryPath)) {
     fs.mkdirSync(directoryPath, { recursive: true });
   }
