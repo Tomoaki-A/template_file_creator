@@ -20,3 +20,11 @@ describe("${name}", () => {
   });
 });`;
 };
+
+export const getTestFilePath = ({ path }: { path: string }) => {
+  if (path.includes(".test")) {
+    return path;
+  }
+  const newPath = path.replace(".ts", ".test.ts");
+  return newPath;
+};

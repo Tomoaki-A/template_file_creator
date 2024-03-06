@@ -8,7 +8,7 @@ import {
 } from "./modules/component";
 import { TYPE } from "./modules/constants";
 import { getPathName } from "./modules/path";
-import { createUnitTestCode } from "./modules/test";
+import { createUnitTestCode, getTestFilePath } from "./modules/test";
 
 if (commandArgs.type === TYPE.COMPONENT) {
   const directoryPath = getPathName({ path: commandArgs.path });
@@ -28,16 +28,18 @@ if (commandArgs.type === TYPE.TEST) {
     throw new Error("Directory does not exist");
   }
 
-  fs.access(commandArgs.path, fs.constants.F_OK, (err: any) => {
+  const testFilePath = getTestFilePath({ path: commandArgs.path });
+
+  fs.access(testFilePath, fs.constants.F_OK, (err: any) => {
     if (err) {
       fs.writeFileSync(
-        commandArgs.path,
+        testFilePath,
         createUnitTestCode({ name: commandArgs.name, isNewCreate: true })
       );
       return;
     }
     fs.appendFileSync(
-      commandArgs.path,
+      testFilePath,
       `\n\n${createUnitTestCode({ name: commandArgs.name })}`
     );
   });

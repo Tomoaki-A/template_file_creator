@@ -22,12 +22,13 @@ if (args_1.commandArgs.type === constants_1.TYPE.TEST) {
     if (!fs.existsSync(directoryPath)) {
         throw new Error("Directory does not exist");
     }
-    fs.access(args_1.commandArgs.path, fs.constants.F_OK, function (err) {
+    var testFilePath_1 = (0, test_1.getTestFilePath)({ path: args_1.commandArgs.path });
+    fs.access(testFilePath_1, fs.constants.F_OK, function (err) {
         if (err) {
-            fs.writeFileSync(args_1.commandArgs.path, (0, test_1.createUnitTestCode)({ name: args_1.commandArgs.name, isNewCreate: true }));
+            fs.writeFileSync(testFilePath_1, (0, test_1.createUnitTestCode)({ name: args_1.commandArgs.name, isNewCreate: true }));
             return;
         }
-        fs.appendFileSync(args_1.commandArgs.path, "\n\n".concat((0, test_1.createUnitTestCode)({ name: args_1.commandArgs.name })));
+        fs.appendFileSync(testFilePath_1, "\n\n".concat((0, test_1.createUnitTestCode)({ name: args_1.commandArgs.name })));
     });
 }
 // WIP
