@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+
 import {
   createReactComponent,
   createViewModelHooks,
@@ -41,3 +42,7 @@ if (commandArgs.type === TYPE.TEST) {
     );
   });
 }
+
+// WIP
+//if (commandArgs.type === TYPE.STORY) {
+//}
