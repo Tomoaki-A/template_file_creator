@@ -1,20 +1,19 @@
 export const createReactComponent = ({ name }: { name: string }) => {
-  return `import React from 'react';
-import { useViewModel } from "./useViewModel";
+  return `import { useViewModel } from "./useViewModel";
 
-  type Props = {};
+type Props = {};
 
-  const ${name} = ({}:Props) => {
-    const {} = useViewModel();
-    return (
-      <div>
+const ${name} = ({}: Props) => {
+  const {} = useViewModel();
+  return (
+    <div>
+      <div></div>
+    </div>
+  );
+};
 
-      </div>
-    );
-  };
-
-  export default ${name};
-  `;
+export default ${name};
+`;
 };
 
 export const createViewModelHooks = () => {
