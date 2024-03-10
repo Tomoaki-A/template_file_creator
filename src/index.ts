@@ -27,7 +27,7 @@ if (commandArgs.type === TYPE.COMPONENT) {
 if (commandArgs.type === TYPE.TEST) {
   const directoryPath = path.dirname(commandArgs.path);
   if (!fs.existsSync(directoryPath)) {
-    throw new Error("Directory does not exist");
+    fs.mkdirSync(directoryPath, { recursive: true });
   }
 
   const testFilePath = getTestFilePath({ path: commandArgs.path });

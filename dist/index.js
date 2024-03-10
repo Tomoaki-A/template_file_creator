@@ -20,7 +20,7 @@ if (args_1.commandArgs.type === constants_1.TYPE.COMPONENT) {
 if (args_1.commandArgs.type === constants_1.TYPE.TEST) {
     var directoryPath = path.dirname(args_1.commandArgs.path);
     if (!fs.existsSync(directoryPath)) {
-        throw new Error("Directory does not exist");
+        fs.mkdirSync(directoryPath, { recursive: true });
     }
     var testFilePath_1 = (0, test_1.getTestFilePath)({ path: args_1.commandArgs.path });
     fs.access(testFilePath_1, fs.constants.F_OK, function (err) {
